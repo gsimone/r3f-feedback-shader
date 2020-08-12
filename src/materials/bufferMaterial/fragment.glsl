@@ -7,19 +7,17 @@ varying vec3 vNormal;
 varying vec2 vUv;
 
 void main()	{
-    float x = resolution.x / resolution.y;
-    vec2 uv = vUv * vec2(x, 1.) + vec2((1. - x)/2., 0.);
 
+    vec2 pixel = vUv * resolution.xy;
+    
     vec3 color = texture2D(bufferTexture, vUv).rgb;
 
     gl_FragColor = vec4(color, 1.);
 
-    vec2 coords = vUv * resolution;
+    float dist = distance(pixel, mouse * resolution.xy);
 
-    float dist = distance(vUv, mouse);
-
-    if (dist < .06) {
-        gl_FragColor.rgb += vec3(.01);
+    if (dist < 15.) {
+        gl_FragColor.rgb += vec3(.1);
     }
     
 }
