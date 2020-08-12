@@ -38,9 +38,11 @@ function Scene() {
 
   })
 
-  useFrame(({ mouse }) => {
+  useFrame(({ mouse, clock }) => {
     const m = [(mouse.x + 1)/2, (mouse.y + 1)/2]
     bufferMaterial.current.uniforms.mouse.value = m
+    bufferMaterial.current.uniforms.time.value += 0.05
+
   })
 
   const scale = useAspect("cover", window.innerWidth, window.innerHeight)
