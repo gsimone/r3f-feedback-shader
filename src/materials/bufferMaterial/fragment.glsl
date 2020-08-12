@@ -17,8 +17,9 @@ void main()	{
     vec2 coords = vUv * resolution;
 
     float dist = distance(vUv, mouse);
-    if (dist < .05) {
-        gl_FragColor.r += .01;
-    }
 
+    if (dist < .06) {
+        gl_FragColor.rgb += vec3(.01);
+    }
+    
 }
