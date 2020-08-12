@@ -18,7 +18,6 @@ function App() {
     >
       <Scene />
       <Effects />
-      <OrbitControls />
     </Canvas>
   );
 }

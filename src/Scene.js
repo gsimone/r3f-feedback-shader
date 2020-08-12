@@ -38,7 +38,12 @@ function Scene() {
 
   })
 
-  const scale = useAspect("cover", 1, 1)
+  useFrame(({ mouse }) => {
+    const m = [(mouse.x + 1)/2, (mouse.y + 1)/2]
+    bufferMaterial.current.uniforms.mouse.value = m
+  })
+
+  const scale = useAspect("cover", window.innerWidth, window.innerHeight)
 
   return (
     <>
@@ -47,7 +52,7 @@ function Scene() {
           <bufferMaterial ref={bufferMaterial} />
         </Plane>
       , bufferScene)}
-      <Plane scale={scale} args={[1, 1, 10, 10]}>
+      <Plane scale={scale}>
         <meshBasicMaterial ref={finalQuad} />
       </Plane>
     </>
